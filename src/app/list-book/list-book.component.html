@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="col-md-4">
+      <input type="text" [(ngModel)]="keyword" name="keyword" />
+      <button type="submit" (click)="Search()">Search</button>
+    </div>
+    <div class="col-md-4">
+      <a routerLink="/add-a-book" class="btn btn-success">Add News</a>
+    </div>
+  </div>
+</div>
+<div class="container">
+
+<a routerLink="/add-a-book">Create a book </a>
+<div class = "panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">List Book </h3>
+  </div>
+    <table class="table table-bordered table-hover">
+      <thead>
+       <tr>
+         <th>ID</th>
+         <th>Name</th>
+         <th>Author</th>
+         <th>Description</th>
+         <th>Update</th>
+         <th>Delete</th>
+       </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor = "let book of bookList ; let i = index ">
+        <td routerLink='/books/{{i+1}}'>{{i+1}}</td>
+        <td>{{book.title}}</td>
+        <td>{{book.author}}</td>
+        <td>{{book.description}}</td>
+        <td>
+          <button type="button" class="btn btn-success" routerLink="/update-a-book/{{book.id}}">Update </button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-danger" (click)="onDeleteCourse(book.id)">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
